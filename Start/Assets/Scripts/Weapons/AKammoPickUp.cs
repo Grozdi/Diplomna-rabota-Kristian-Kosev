@@ -11,5 +11,6 @@ public class AKammoPickUp : MonoBehaviour
     {
         fakeAmmoAK.SetActive(false);
         ammoPickupSound.Play();
+        AmmoGlobal.aKAmmo += 30;
     }
 }
