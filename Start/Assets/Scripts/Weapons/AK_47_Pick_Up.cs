@@ -13,6 +13,7 @@ public class AK_47_Pick_Up : MonoBehaviour
         realAK.SetActive(true);
         fakeAK.SetActive(false);
         akPickupSound.Play();
+        GetComponent<BoxCollider>().enabled = false;
     }
 
 }

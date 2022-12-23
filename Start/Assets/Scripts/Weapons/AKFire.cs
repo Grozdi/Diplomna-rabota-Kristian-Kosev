@@ -10,15 +10,24 @@ public class AKFire : MonoBehaviour
     public AudioSource gunFire;
     public bool isFiring = false;
     public float fireRate;
+    public AudioSource emptyCLick;
+
 
 
     void Update()
     {
         if (Input.GetKeyDown(fireKey))
         {
-            if(isFiring == false)
+            if(AmmoGlobal.aKAmmo < 1)
             {
-                StartCoroutine(FiringAK());
+                emptyCLick.Play();
+            }
+            else
+            {
+                if (isFiring == false)
+                {
+                    StartCoroutine(FiringAK());
+                }
             }
         }
     }
@@ -33,5 +42,6 @@ public class AKFire : MonoBehaviour
         yield return new WaitForSeconds(fireRate);
         theAK.GetComponent<Animator>().Play("New State");
         isFiring =false;
+        AmmoGlobal.aKAmmo -= 1;
     }
 }
