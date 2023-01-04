@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,12 @@ public class SoldierAI : MonoBehaviour
     public string hitTag;
     public bool lookAtPlayer = false;
     public GameObject enemy;
+    public AudioSource enemyFire;
+    public bool isFiring = false;
+    public float fireRate;
+    public int genHurt;
+    public AudioSource[] hurtSound;
+    public GameObject hurtScreen;
 
     void Update()
     {
@@ -15,15 +22,30 @@ public class SoldierAI : MonoBehaviour
         {
             hitTag = enemyDamage.transform.tag;
         }
-        if (hitTag == "Player")
+        if (hitTag == "Player" && isFiring == false)
         {
-            lookAtPlayer = true;
-            enemy.GetComponent<Animator>().Play("demo_combat_shoot");
+            StartCoroutine(Fire());
         }
-        else
+        if (hitTag != "Player")
         {
             lookAtPlayer = false;
             enemy.GetComponent<Animator>().Play("demo_combat_idle");
         }
+    }
+    IEnumerator Fire()
+    {
+        isFiring = true;
+        lookAtPlayer = true;
+        enemyFire.Play();
+        enemy.GetComponent<Animator>().Play("demo_combat_shoot", -1, 0);
+        enemy.GetComponent<Animator>().Play("demo_combat_shoot");
+        GlobalHealth.healthValue -= 5;
+        hurtScreen.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        hurtScreen.SetActive(false);
+        genHurt = UnityEngine.Random.Range(0, 3);
+        hurtSound[genHurt].Play();
+        yield return new WaitForSeconds(fireRate);
+        isFiring=false;
     }
 }

@@ -360,6 +360,7 @@
 "Assets/Scripts/PlayerCam.cs"
 "Assets/Scripts/PlayerCasting.cs"
 "Assets/Scripts/PlayerMovement.cs"
+"Assets/Scripts/Stats/GlobalHealth.cs"
 "Assets/Scripts/Weapons/AKammoPickUp.cs"
 "Assets/Scripts/Weapons/AKFire.cs"
 "Assets/Scripts/Weapons/AK_47_Pick_Up.cs"
