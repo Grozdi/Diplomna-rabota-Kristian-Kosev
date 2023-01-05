@@ -11,6 +11,8 @@ public class AKFire : MonoBehaviour
     public bool isFiring = false;
     public float fireRate;
     public AudioSource emptyCLick;
+    public float targetDistance;
+    public int damageAmount;
 
 
 
@@ -33,7 +35,13 @@ public class AKFire : MonoBehaviour
     }
     IEnumerator FiringAK()
     {
+        RaycastHit shot;
         isFiring = true;
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out shot))
+        {
+            targetDistance = shot.distance;
+            shot.transform.SendMessage("DamageEnemy", damageAmount, SendMessageOptions.DontRequireReceiver);
+        }
         theAK.GetComponent<Animator>().Play("AkFire");
         muzzleFlash.SetActive(true);
         gunFire.Play();
