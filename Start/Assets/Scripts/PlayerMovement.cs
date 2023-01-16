@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        if (OnSlope())
+        if (slopeOn())
         {
             rb.AddForce(GetSlopeDir() * moveSpeed * 25f, ForceMode.Force);
 
@@ -149,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
         else if(!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
 
-        rb.useGravity = !OnSlope();
+        rb.useGravity = !slopeOn();
 
 
 
@@ -177,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
     }
 
-    private bool OnSlope()
+    private bool slopeOn()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
         {
@@ -186,7 +186,7 @@ public class PlayerMovement : MonoBehaviour
         }
         return false;
     }
-    private Vector3 GetSlopeDir()
+    public Vector3 GetSlopeDir()
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
