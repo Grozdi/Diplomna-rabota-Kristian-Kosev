@@ -524,7 +524,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 81930714}
-  - component: {fileID: 81930715}
   m_Layer: 0
   m_Name: SoldierSpawnPoints
   m_TagString: Untagged
@@ -547,23 +546,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &81930715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81930713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b645a3d81424f214e9bd7874ed4e3000, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fieldDimenstions:
-    x: 10
-    y: 10
-  numberSoldiersToSpawn: 3
-  soldierPrefab: {fileID: 4506801401419362651}
 --- !u!1 &89108339
 GameObject:
   m_ObjectHideFlags: 0
