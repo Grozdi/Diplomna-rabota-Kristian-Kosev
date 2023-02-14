@@ -10,7 +10,7 @@ public class EnemyDeath : MonoBehaviour
     public GameObject explosion;
     public GameObject enemy;
 
-    void DamageEnemy(float damageAmount)
+    void DamageEnemy(int damageAmount)
     {
         enemyHealth -= damageAmount;
     }
@@ -19,7 +19,7 @@ public class EnemyDeath : MonoBehaviour
         if(enemyHealth <= 0 && enemyDead == false)
         {
             enemyDead = true;
-            enemy.GetComponent<ParticleSystem>().Emit(0);
+            this.GetComponent<ParticleSystem>().Emit(0);
             enemyAI.SetActive(false);
         }
     }
