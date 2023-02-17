@@ -14,6 +14,18 @@ public class SoldierAI : MonoBehaviour
     public int genHurt;
     public AudioSource[] hurtSound;
     public GameObject hurtScreen;
+    public EnemyHealth Health;
+
+    
+    private void Start()
+    {
+        Health.onDeath += Die;
+    }
+
+    private void Die(Vector3 Position)
+    {
+        Destroy(gameObject);
+    }
 
     void Update()
     {

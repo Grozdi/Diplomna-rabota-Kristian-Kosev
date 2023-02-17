@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class AKFire : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class AKFire : MonoBehaviour
     public float targetDistance;
     public int damageAmount;
 
+    public DamageConfigScriptableObject DamageConfig;
 
 
     void Update()
@@ -37,6 +39,15 @@ public class AKFire : MonoBehaviour
     {
         RaycastHit shot;
         isFiring = true;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out shot))
+        {
+            targetDistance = shot.distance;
+        }
+        if (shot.collider.TryGetComponent(out TDanage damagable))
+        {
+                targetDistance = shot.distance;
+                damagable.TakeDamage(DamageConfig.GetDamage(targetDistance));
+        }
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out shot))
         {
             targetDistance = shot.distance;
