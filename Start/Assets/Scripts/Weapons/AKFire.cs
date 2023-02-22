@@ -14,6 +14,7 @@ public class AKFire : MonoBehaviour
     public AudioSource emptyCLick;
     public float targetDistance;
     public int damageAmount;
+    public Transform shotOrigin;
 
     public DamageConfigScriptableObject DamageConfig;
 
@@ -39,20 +40,20 @@ public class AKFire : MonoBehaviour
     {
         RaycastHit shot;
         isFiring = true;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out shot))
+
+        
+        var transformDir = shotOrigin.TransformDirection(Vector3.forward);
+        Debug.DrawRay(shotOrigin.position, transformDir * 100, Color.green, 10, false);
+        if (Physics.Raycast(shotOrigin.position, transformDir, out shot))
         {
-            targetDistance = shot.distance;
-        }
-        if (shot.collider.TryGetComponent(out TDanage damagable))
-        {
+            if (shot.collider.TryGetComponent(out TDanage damagable))
+            {
                 targetDistance = shot.distance;
                 damagable.TakeDamage(DamageConfig.GetDamage(targetDistance));
-        }
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out shot))
-        {
+            }
             targetDistance = shot.distance;
-            shot.transform.SendMessage("DamageEnemy", damageAmount, SendMessageOptions.DontRequireReceiver);
         }
+        
         theAK.GetComponent<Animator>().Play("AkFire");
         muzzleFlash.SetActive(true);
         gunFire.Play();
