@@ -40,8 +40,9 @@ public class AKFire : MonoBehaviour
     {
         RaycastHit shot;
         isFiring = true;
+        targetDistance = PlayerCasting.distancheTarget;
 
-        
+
         var transformDir = shotOrigin.TransformDirection(Vector3.forward);
         Debug.DrawRay(shotOrigin.position, transformDir * 100, Color.green, 10, false);
         if (Physics.Raycast(shotOrigin.position, transformDir, out shot))
@@ -49,6 +50,7 @@ public class AKFire : MonoBehaviour
             if (shot.collider.TryGetComponent(out TDanage damagable))
             {
                 targetDistance = shot.distance;
+                shot.transform.SendMessage("DamageEnemy", damageAmount,SendMessageOptions.DontRequireReceiver);
                 damagable.TakeDamage(DamageConfig.GetDamage(targetDistance));
             }
             targetDistance = shot.distance;
