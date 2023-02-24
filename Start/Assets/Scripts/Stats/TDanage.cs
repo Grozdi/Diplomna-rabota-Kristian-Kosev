@@ -15,6 +15,6 @@ public interface TDanage
 
     public void TakeDamage(int Damage)
     {
-        Damage = 30;
+        Damage -= 30;
     }
 }

@@ -17,15 +17,6 @@ public class SoldierAI : MonoBehaviour
     public EnemyHealth Health;
 
     
-    private void Start()
-    {
-        Health.onDeath += Die;
-    }
-
-    private void Die(Vector3 Position)
-    {
-        Destroy(gameObject);
-    }
 
     void Update()
     {

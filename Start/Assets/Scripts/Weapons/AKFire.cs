@@ -47,11 +47,10 @@ public class AKFire : MonoBehaviour
         Debug.DrawRay(shotOrigin.position, transformDir * 100, Color.green, 10, false);
         if (Physics.Raycast(shotOrigin.position, transformDir, out shot))
         {
-            if (shot.collider.TryGetComponent(out TDanage damagable))
+            if (shot.collider.TryGetComponent(out EnemyDeath damagable))
             {
                 targetDistance = shot.distance;
-                shot.transform.SendMessage("DamageEnemy", damageAmount,SendMessageOptions.DontRequireReceiver);
-                damagable.TakeDamage(DamageConfig.GetDamage(targetDistance));
+                damagable.TakeDamage(45);
             }
             targetDistance = shot.distance;
         }
