@@ -16,6 +16,7 @@ public class SoldierAI : MonoBehaviour
     public GameObject hurtScreen;
     public EnemyHealth Health;
 
+
     
 
     void Update()

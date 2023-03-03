@@ -9,7 +9,7 @@ public class EnemyDeath : MonoBehaviour
     public GameObject enemyAI;
     public GameObject explosion;
     public GameObject enemy;
-
+    public static int deathCount;
     public void TakeDamage(int damageAmount)
     {
         enemyHealth -= damageAmount;
@@ -28,6 +28,7 @@ public class EnemyDeath : MonoBehaviour
         
         enemyAI.SetActive(false);
         yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration);
+        deathCount++;
         Destroy(gameObject);
     }
 }

@@ -9723,6 +9723,7 @@ GameObject:
   - component: {fileID: 452389308}
   - component: {fileID: 452389307}
   - component: {fileID: 452389309}
+  - component: {fileID: 452389310}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9808,6 +9809,18 @@ MonoBehaviour:
   orientation: {fileID: 737428519}
   maxSlopeAngle: 0
   state: 0
+--- !u!114 &452389310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452389306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de1cc0484aab1246a0716c9a63cef3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &452658195
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Newtonsoft.Json;
+using System.IO;
 
 public class GlobalHealth : MonoBehaviour
 {
     public GameObject healthDisplay;
     public static int healthValue;
-
     void Start()
     {
         healthValue = 100;
