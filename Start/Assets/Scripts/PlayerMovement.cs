@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.walking;
             moveSpeed = walkSpeed;
-}
+        }
 
         else
         {

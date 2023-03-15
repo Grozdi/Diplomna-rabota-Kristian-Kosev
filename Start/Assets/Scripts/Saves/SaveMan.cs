@@ -29,7 +29,7 @@ public static class SaveMan
             }
             catch
             {
-
+                Debug.Log("Error in loading game");
             }
         }
         return null;
